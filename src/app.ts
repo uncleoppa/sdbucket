@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
 
 export default async() => {
     const app = express();
@@ -9,6 +10,8 @@ export default async() => {
     app.use(cors());
     app.get("/",
         (req, res, next) => {
+            dotenv.config();
+            console.log(process.env.LOG_LEVEL);
             res.status(200).send("test");
         }
     )
